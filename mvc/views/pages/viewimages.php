@@ -1,32 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <base href="http://localhost/InstaWeb/" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/css/normalize.css" />
-    <link rel="stylesheet" href="/public/css/styles.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="container">
-    <header>
+
+<header>
       <nav class="nav">
         <a href="viewimages.html"
           ><img src="public/assets/img/logo.png" class="logo-main" alt=""
         /></a>
-        <div class="input-group">
+        <!-- <div class="input-group">
           <input type="text" class="input" placeholder="Search" />
           <button class="btn">Search</button>
-        </div>
+        </div> -->
         <div class="icon-group">
-          <div class="image-share-button">
-            <button class="btn" onclick="openForm()">Share image</button>
-          </div>
-          <div class="icon">
+          <!-- <div class="icon">
             <img src="public/assets/img/search.png" class="search" alt="" />
-          </div>
+          </div> -->
           <div class="profile-pic">
             <img src="public/assets/img/oranges.jpg" alt="" />
           </div>
@@ -34,6 +19,13 @@
       </nav>
     </header>
     <main>
+    <section class="image-share content_center">
+        <div class="image-share-wrapper">
+          <div class="profile-pic"><img src="public/assets/img/oranges.jpg"></div>
+          <div class="image-share-button"><button class="btn" onclick="openForm()">Share image</button></div>
+        </div>
+        </div>
+      </section>
       <!--Popup for uploading image-->
       <div class="form-popup content_center" id="myForm">
         <form class="form-container">
@@ -59,7 +51,6 @@
                     Close
                   </button>
                 </div>
-
                 <textarea
                   name="description"
                   id="description"
@@ -94,44 +85,42 @@
           </div>
         </form>
       </div>
-
       <!--Photo zone-->
-      <div class="image-content content_center">
-        <div class="image-content-top">
-          <div class="profile-pic">
-            <img src="public/assets/img/oranges.jpg" alt="" />
-          </div>
-          <p>Hello555</p>
-        </div>
-        <div class="image-content-main">
-          <img src="public/assets/img/beautiful.jpg" alt="" />
-        </div>
-        <div class="image-content-desc">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-            ratione alias aliquid praesentium provident ipsum voluptate, dolorum
-            beatae error unde.
-          </p>
-        </div>
-      </div>
-      <div class="image-content content_center">
-        <div class="image-content-top">
-          <div class="profile-pic">
-            <img src="public/assets/img/oranges.jpg" alt="" />
-          </div>
-          <p>Hello555</p>
-        </div>
-        <div class="image-content-main">
-          <img src="public/assets/img/beautiful.jpg" alt="" />
-        </div>
-        <div class="image-content-desc">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-            ratione alias aliquid praesentium provident ipsum voluptate, dolorum
-            beatae error unde.
-          </p>
-        </div>
-      </div>
+      <?php
+        //hứng kết quả truyền qua từ Musicmodel từ Home.php
+        $arrPostLink = [];
+        $arrPostDes = [];
+        $arrNameOwner = [];
+        $arrAvaOwner = [];
+        if(isset($data["post"])){
+          while($row = mysqli_fetch_array($data["post"])){
+            // echo $row["PostLink"];
+            array_push($arrPostLink, $row["Post_Img"]);
+            array_push($arrPostDes, $row["Descript"]);
+            array_push($arrNameOwner, $row["First_name"]." ".$row["Last_name"]);
+            array_push($arrAvaOwner, $row["Ava_Img"]);
+          }
+        }
+        $c = count($arrPostLink);
+        for ($x = 0; $x < $c; $x++) {
+          echo('<section class="image-content content_center">');
+          echo('<div class="image-content-top">');
+          echo('<div class="profile-pic">');
+        
+          echo('<img src="'.$arrAvaOwner[$x].'" alt="" />');
+          echo('</div>');
+          echo('<p>'.$arrNameOwner[$x].'</p>');
+          echo('</div>');
+          echo('<div class="image-content-main">');
+          echo('<img src="'.$arrPostLink[$x].'" alt="" />');
+          echo('</div>');
+          echo('<div class="image-content-desc">');
+          echo('<p>'.$arrPostDes[$x].'</p>');
+          echo('</div>');
+          echo('</section>');
+        }
+        
+      ?>
       <div id="cookies">
         <div class="container">
           <div class="cookies">
@@ -142,19 +131,4 @@
         </div>
       </div>
     </main>
-    <footer>
-      <div class="fter">
-        <ul class="list list--inline">
-          <li class="list__item"><a href="#about">About</a></li>
-          <li class="list__item"><a href="#copyright">Copyright</a></li>
-          <li class="list__item"><a href="#privacy">Privacy</a></li>
-          <li class="list__item"><a href="#help">Help</a></li>
-          <li class="list__item"><a href="Login">Login</a></li>
-        </ul>
-      </div>
-    </footer>
-    <script src="public/js/formcontrol.js"></script>
-    <script src="public/js/cookies.js"></script>
-    <script src="public/js/dragdrop.js"></script>
-  </body>
-</html>
+    

@@ -1,15 +1,16 @@
 <?php
 class Home extends Controller{
 
-    public $PostModel;
+    // public $PostModel;
 
     public function __construct(){
         $this->PostModel = $this->model("PostModel");
     } 
     function SayHi(){
-        //$post = $this->PostModel->yourPost();
+        $post = $this->PostModel->PublicPost();
         $this->view("masterHome", [
-            "page"=>"viewimages",
+            "page"=>"Home",
+            "post"=>$post
         ]);
 
     }
