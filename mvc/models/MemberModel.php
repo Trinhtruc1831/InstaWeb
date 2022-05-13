@@ -49,8 +49,8 @@ class MemberModel extends DB{
     
     }
     //register
-    public function InsertNewUser($username, $pass, $fullname, $email){   
-        $sql = "INSERT INTO member VALUES ( null, '$username', '$pass', '$fullname', '$email')";
+    public function InsertNewUser($First_name, $Last_name, $Pass, $Email){   
+        $sql = "INSERT INTO account VALUES ( null, '$First_name', '$Last_name', '$Pass', '$Email')";
         if (mysqli_query($this->con, $sql) ){
             $result = true;
         }

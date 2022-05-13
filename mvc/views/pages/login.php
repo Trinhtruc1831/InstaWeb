@@ -1,33 +1,90 @@
-<?php require_once "./mvc/views/block/header.php"; ?>
-<h1>Login</h1>
-<link rel="stylesheet" href="public/css/login.css">
-<?php
-if (isset($data['result'])) {
-    // var_dump($data['result']);
-?>
-<p style=" margin-top: 40px; text-align: center; font-size: 20px; font-weight: bold;">
-    <?php if ($data['result'] == '1') {
-        echo "Wrong password, please login again!";
-    }else if ($data['result'] == '2') {
-        echo "Username is wrong, please login again!";
-    }
-    ?>
-<?php } ?>
-</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in</title>
+    <link rel="stylesheet" href="public/css/normalize.css" />
+    <link rel="stylesheet" href="public/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <a href="/mvc/views/pages/viewimage.html"
+          ><img src="/public/assets/img/logo.png" class="logo-main" alt=""
+        /></a>
+      </nav>
+    </header>
+    <main>
+      <div class="container register--wrapper">
+        <form action="./Login" method="post">
+          <h1>Sign in</h1>
+          <div class="input-register">
+            <label>
+              Email<br />
+              <input
+                type="email"
+                placeholder="Enter Email"
+                name="email"
+                value="<?php if(isset($_COOKIE["email"])){ echo $_COOKIE["email"]; }else{ echo "";}?>"
+                required
+              />
+            </label>
+          </div>
 
-<form action="./Login" method="post">
+          <div class="input-register">
+            <label for="passw">Password</label><br />
+            <input
+              type="password"
+              placeholder="Enter Password"
+              id="passw"
+              name="passw"
+              onfocus="show_message()"
+              onblur="hide_message()"
+              onkeyup="validate_password()"
+              value="<?php if(isset($_COOKIE["password"])){ echo $_COOKIE["password"]; }else{ echo "";}    ?>"
+              required
+            />
+          </div>
 
-    <div class="container">
-        <label><b>Username</b></label>
-        <input class="input" type="text" placeholder="Enter username" name="username" value="<?php if(isset($_COOKIE["username"])){ echo $_COOKIE["username"]; }else{ echo "";}    ?>" required>
-        <label><b>Password</b></label>
-        <input class="input" type="password" id="myInput" placeholder="Enter password" name="pass" value="<?php if(isset($_COOKIE["password"])){ echo $_COOKIE["password"]; }else{ echo "";}    ?>" pattern=".{8,}" required title="8 characters minimum">
-        <input type="checkbox" onclick="myFunction()"> Show Password
-        <button type="submit" name="btnLogin" class="btn btn-primary">Login</button>
-        <a href="Login/ForgotPassword">Forgot Password ?</a>
-        <a href="Login/Register">Sign up</a>
+          <div id="message">
+            <h3>Username or Password is incorrect</h3>
+          </div>
 
+          <div class="register__button">
+            <input type="reset" class="register__reset" value="Clear" />
+            <input type="submit" class="register__submit" value="Sign in" />
+          </div>
+
+          <div>
+            <h4>
+              Don't have an account yet?
+              <a href="Login/Register"> Register here!></a>
+            </h4>
+          </div>
+        </form>
+      </div>
+    </main>
+    <div id="cookies">
+      <div class="container">
+        <div class="cookies">
+          <p>This website uses cookies.</p>
+          <a href="">Check out</a>
+          <button id="cookies-btn">Agree</button>
+        </div>
+      </div>
     </div>
-</form>
-
-
+    <footer>
+      <div class="fter">
+        <ul class="list list--inline">
+          <li class="list__item"><a href="about.html">About</a></li>
+          <li class="list__item"><a href="copyright.html">Copyright</a></li>
+          <li class="list__item"><a href="privacy.html">Privacy</a></li>
+          <li class="list__item"><a href="help.html">Help</a></li>
+        </ul>
+      </div>
+    </footer>
+    <script src="public/js/cookies.js"></script>
+  </body>
+</html>

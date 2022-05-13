@@ -4,18 +4,19 @@ require_once './mvc/controllers/User.php';
 
     class Login extends Controller{
         public $MemberModel;
-        public $MusicModel;
+        public $PostModel;
         public $admin;
         public $user;
 
         public function __construct(){
             $this->MemberModel = $this->model("MemberModel");
-            $this->MusicModel = $this->model("MusicModel");
+            $this->PostModel = $this->model("PostModel");
         }
+
         //LOGIN
         public function SayHi(){
             if (isset($_POST["btnLogin"]) ){
-                $Username = $_POST["username"];
+                $Email = $_POST["email"];
                 $Password = $_POST["pass"];
                 //$Password = password_hash($Password, PASSWORD_DEFAULT);
                 $kq=$this->MemberModel->CheckMember($Username, $Password);
@@ -23,7 +24,7 @@ require_once './mvc/controllers/User.php';
                  //show result
                 if($kq == '1' || $kq == '2'){
                     $this->view("masterHome" ,[
-                        "page"=>"login",
+                        "page"=>"signin",
                         "result"=>$kq
                     ]);
                 }
@@ -61,43 +62,22 @@ require_once './mvc/controllers/User.php';
             unset($_SESSION['login']);
             //xóa hết tất cả các session
             session_destroy();
-            header('location: http://localhost/RelaxChill/Home');
-        }
-
-        //FORGOT PASSWORD
-        public function ForgotPassword(){
-            // get data nguoi nhap
-            if (isset($_POST["btnReset"]) ){
-                $username = $_POST["username"];
-                $email = $_POST['email'];
-                $kq=$this->MemberModel->CheckMail($username, $email);
-                // var_dump ($kq);
-                 //show result
-                 $this->view("masterHome", [
-                            "page"=>"forgot",
-                            "result"=>$kq
-                        ]); 
-            }
-            else
-            {
-                $this->view("masterHome", [
-                    "page"=>"forgot",
-                ]);
-            }
+            header('location: http://localhost/Insta/');
         }
 
         //REGISTER
         public function Register(){
             // get data 
-            if (isset($_POST["btnResgister"]) ){
-                $username = $_POST["username"];
-                $pass = $_POST["pass"];
+            if (isset($_POST["btnRegister"]) ){
+                $First_name = $_POST["First_name"];
+                $Last_name = $_POST["Last_name"];
+                $Email = $_POST["Email"];
+                $Pass = $_POST["Pass"];
+                //$Ava_Img = $_POST["img"];
                 //$pass = password_hash($pass, PASSWORD_DEFAULT);
-                $fullname = $_POST["fullname"];
-                $email = $_POST["email"];
                 //insert database by users
-                $kq = $this->MemberModel->InsertNewUser($username, $pass, $fullname, $email);
-                // echo $kq; 
+                $kq = $this->MemberModel->InsertNewUser($First_name, $Last_name, $Pass, $Email);
+                echo $kq; 
                 //Kiểm tra đăng nhập thành công/thất bại (true/false)
                 //show result
                 $this->view("masterHome" ,[
@@ -109,8 +89,7 @@ require_once './mvc/controllers/User.php';
                 $this->view("masterHome", [
                     "page"=>"register",
                 ]);
-            }
-            
+            }  
         }
     }
 ?>

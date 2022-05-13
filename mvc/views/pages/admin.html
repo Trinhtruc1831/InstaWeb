@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="/public/css/normalize.css" />
+    <link rel="stylesheet" href="/public/css/styles.css" />
+  </head>
+  <body>
+    <main>
+      <div class="sidebar">
+        <a href="#" onclick="openUser()">User</a>
+        <a href="#" onclick="openImage()">Image</a>
+      </div>
+      <div class="admin_content" id="admin-user">
+        <div class="admin_search">
+          <input type="text" class="input" placeholder="Search" />
+          <button class="btn">Search</button>
+        </div>
+        <table class="admin_table">
+          <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Registration time</th>
+            <th>View Info</th>
+          </tr>
+          <tr>
+            <td>s1111111@gmail.com</td>
+            <td>Maria Anders</td>
+            <td>2022-05-09 11:00:00</td>
+            <td>
+              <a href="/mvc/views/pages/admin-user.html" style="text-decoration: none"
+                >View Info</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>s1111111@gmail.com</td>
+            <td>Maria Anders</td>
+            <td>2022-05-09 11:00:00</td>
+            <td><button>View Info</button></td>
+          </tr>
+          <tr>
+            <td>s1111111@gmail.com</td>
+            <td>Maria Anders</td>
+            <td>2022-05-09 11:00:00</td>
+            <td><button>View Info</button></td>
+          </tr>
+          <tr>
+            <td>s1111111@gmail.com</td>
+            <td>Maria Anders</td>
+            <td>2022-05-09 11:00:00</td>
+            <td><button>View Info</button></td>
+          </tr>
+          <tr>
+            <td>s1111111@gmail.com</td>
+            <td>Maria Anders</td>
+            <td>2022-05-09 11:00:00</td>
+            <td><button>View Info</button></td>
+          </tr>
+          <tr>
+            <td>s1111111@gmail.com</td>
+            <td>Maria Anders</td>
+            <td>2022-05-09 11:00:00</td>
+            <td><button>View Info</button></td>
+          </tr>
+          <tr>
+            <td>s1111111@gmail.com</td>
+            <td>Maria Anders</td>
+            <td>2022-05-09 11:00:00</td>
+            <td><button>View Info</button></td>
+          </tr>
+          <tr>
+            <td>s1111111@gmail.com</td>
+            <td>Maria Anders</td>
+            <td>2022-05-09 11:00:00</td>
+            <td><button>View Info</button></td>
+          </tr>
+          <tr>
+            <td>s1111111@gmail.com</td>
+            <td>Maria Anders</td>
+            <td>2022-05-09 11:00:00</td>
+            <td><button>View Info</button></td>
+          </tr>
+        </table>
+      </div>
+      <div class="admin_content" id="admin-image">
+        <div class="admin-grid-wrapper">
+          <div class="grid grid--1x3 admin_image_grid">
+            <div>
+              <div class="image-container">
+                <img
+                  src="/public/assets/img/oranges.jpg"
+                  alt="Avatar"
+                  class="image"
+                  style="width: 100%"
+                />
+                <div class="middle">
+                  <button
+                    class="modal-button"
+                    onclick="document.getElementById('id01').style.display='block'"
+                  >
+                    Open Modal
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="image-container">
+                <img
+                  src="/public/assets/img/oranges.jpg"
+                  alt="Avatar"
+                  class="image"
+                  style="width: 100%"
+                />
+                <div class="middle">
+                  <button
+                    class="modal-button"
+                    onclick="document.getElementById('id01').style.display='block'"
+                  >
+                    Open Modal
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="image-container">
+                <img
+                  src="/public/assets/img/oranges.jpg"
+                  alt="Avatar"
+                  class="image"
+                  style="width: 100%"
+                />
+                <div class="middle">
+                  <button
+                    class="modal-button"
+                    onclick="document.getElementById('id01').style.display='block'"
+                  >
+                    Open Modal
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="image-container">
+                <img
+                  src="/public/assets/img/oranges.jpg"
+                  alt="Avatar"
+                  class="image"
+                  style="width: 100%"
+                />
+                <div class="middle">
+                  <button
+                    class="modal-button"
+                    onclick="document.getElementById('id01').style.display='block'"
+                  >
+                    Open Modal
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div id="id01" class="modal">
+        <span
+          onclick="document.getElementById('id01').style.display='none'"
+          class="close"
+          title="Close Modal"
+          >&times;</span
+        >
+        <form class="modal-content" action="/action_page.php">
+          <div class="moral-container">
+            <h1>Delete Account</h1>
+            <p>Are you sure you want to delete your account?</p>
+
+            <div class="clearfix">
+              <button type="button" class="cancelbtn">Cancel</button>
+              <button type="button" class="deletebtn">Delete</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <div class="fter">
+        <ul class="list list--inline">
+          <li class="list__item"><a href="about.html">About</a></li>
+          <li class="list__item"><a href="copyright.html">Copyright</a></li>
+          <li class="list__item"><a href="privacy.html">Privacy</a></li>
+          <li class="list__item"><a href="help.html">Help</a></li>
+        </ul>
+      </div>
+    </footer>
+    <script src="/public/js/sidebar.js"></script>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("id01");
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

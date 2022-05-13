@@ -1,18 +1,15 @@
 <?php
 class Home extends Controller{
 
-    public $MusicModel;
+    public $PostModel;
 
     public function __construct(){
-        $this->MusicModel = $this->model("MusicModel");
+        $this->PostModel = $this->model("PostModel");
     } 
     function SayHi(){
-        $song = $this->MusicModel->ourSong();
-        $noise = $this->MusicModel->whiteNoise();
+        //$post = $this->PostModel->yourPost();
         $this->view("masterHome", [
-            "page"=>"home",
-            "song"=>$song,
-            "noise"=>$noise
+            "page"=>"viewimages",
         ]);
 
     }
