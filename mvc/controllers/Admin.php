@@ -21,6 +21,14 @@ class Admin extends Controller{
             "post"=>$post
         ]);
     }
+    public function SearchMember(){
+        // echo($_GET["keyword"]);
+        $mem = $this->MemberModel->SearchMember($_POST['keyword']);
+        $this->view("masterAdmin", [
+            "page"=>"managemem",
+            "mem"=>$mem
+        ]);
+    }
     public function ShowInfo($idacc){
         $mem = $this->MemberModel->GetSpeMem($idacc);
         $this->view("masterAdmin", [
@@ -28,6 +36,40 @@ class Admin extends Controller{
             "mem"=>$mem
         ]);
     }
+    function ResetPassword(){   
+        if(isset($_POST['submit'])){
+           
+            $newpass = $_POST["newpass"];
+            $id = $_POST["id"];           
+            $kq = $this->MemberModel->ResetPass($id,$newpass);
+            $mem = $this->MemberModel->GetSpeMem($id);
+            $this->view("masterAdmin", [
+                "page"=>"admin-user",
+                "mem"=>$mem,
+                "result" => $kq
+            ]);
+        }
+        else{
+            $id = $_POST["id"];
+            $mem = $this->MemberModel->GetSpeMem($id);
+            $this->view("masterAdmin", [
+                "page"=>"admin-user",
+                "mem"=>$mem
+            ]);
+        }
+    }
+    function DelImage(){   
+        $pid = $_POST["IdDelImg"];           
+        $kq = $this->PostModel->DelPost($pid);
+        $post = $this->PostModel->allPost();
+        $this->view("masterAdmin", [
+            "page"=>"managepost",
+            "post"=>$post
+        ]);
+    }
+    
+
+
 }
     //Cũ
 //     //-----------------------------MANAGE MEMBER-------------------------------------------------------

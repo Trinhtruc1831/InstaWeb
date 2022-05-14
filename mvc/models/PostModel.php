@@ -14,8 +14,31 @@ class PostModel extends DB{
     }
     public function DelPost($id){
         $qr = "DELETE FROM post WHERE Pid=$id";
-        return mysqli_query($this->con, $qr);
+        if ( mysqli_query($this->con, $qr) ){
+            $result = true;
+        }
+        else {
+            $result = false;
+        }            
+        return json_encode($result); 
     }
+
+    public function ResetPass($id,$newpass)
+    {
+        $sql = "UPDATE account  
+                SET Pass='$newpass'       
+                WHERE id = '$id'";
+        if (mysqli_query($this->con, $sql) ){
+            $result = true;
+        }
+        else {
+            $result = false;
+        }            
+        return json_encode($result); 
+        
+    }
+
+
     public function InsertPost($id){
         $qr = "INSERT INTO post (Descript, Show_Level, Post_Img, Acc_post) VALUES ( '$Descript', '$Show_Level', '$Post_Img', '$Acc_post')";
         if (mysqli_query($this->con, $qr) ){

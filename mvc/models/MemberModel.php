@@ -14,6 +14,28 @@ class MemberModel extends DB{
         return mysqli_query($this->con, $sql);
         
     }
+    //get a specific member from database
+    public function ResetPass($id,$newpass)
+    {
+        $sql = "UPDATE account  
+                SET Pass='$newpass'       
+                WHERE id = '$id'";
+        if (mysqli_query($this->con, $sql) ){
+            $result = true;
+        }
+        else {
+            $result = false;
+        }            
+        return json_encode($result); 
+        
+    }
+    public function SearchMember($keyword)
+    {
+        $sql = "SELECT * FROM account where Email like '%$keyword%' or First_name like '%$keyword%'  or Last_name like '%$keyword%'   ORDER BY REG_TIME ";
+        return mysqli_query($this->con, $sql);
+        
+    }
+
     //register
     public function InsertNewUser($First_name, $Last_name, $Pass, $Email){   
         $sql = "INSERT INTO account VALUES ( null, '$First_name', '$Last_name', '$Pass', '$Email')";

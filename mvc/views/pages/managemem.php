@@ -1,8 +1,8 @@
 <div class="admin_content" id="admin-user" style="display:block;">
-        <div class="admin_search">
-          <input type="text" class="input" placeholder="Search">
+        <form class="admin_search" method="post" action="Admin/SearchMember">
+          <input type="text" class="input" name ="keyword" placeholder="Search">
           <button class="btn">Search</button>
-        </div>
+        </form>
         <table class="admin_table">
           <tbody>
             <tr>

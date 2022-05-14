@@ -1,6 +1,19 @@
+
+<?php 
+if (isset($data["result"])) {
+        if ($data["result"] == true) {
+            echo "<script type='text/javascript'>alert('Reset password Successfully !');</script>";
+        } else{
+        echo "<script type='text/javascript'>alert('Repair failed!');</script>";
+        }
+} 
+?>
+
+
 <?php
-    //hứng kết quả truyền qua từ Musicmodel từ Home.php
+    
     $arrEmail = [];
+    $arrid = [];
     $arrAva_Img = [];
     $arrFirstName = [];
     $arrLastName = [];
@@ -9,6 +22,7 @@
     while($row = mysqli_fetch_array($data["mem"])){
         array_push($arrAva_Img, $row["Ava_Img"]);
         array_push($arrEmail, $row["Email"]);
+        array_push($arrid, $row["id"]);
         array_push($arrFirstName, $row["First_name"]." ".$row["Last_name"]);
         array_push($arrLastName, $row["Last_name"]);
         array_push($arrPassword, $row["Pass"]);
@@ -38,18 +52,24 @@
                 value="'.$arrEmail[$x].'"
             />');
         echo('<h2>Password</h2>');
-        echo('<input
-                type="password"
-                id="passw"
-                class="input_register"
-                value="'.$arrPassword[$x].'"
-            />');
-        echo('<a href="">Reset Password</a>');
+        echo('<form method="post" action="Admin/ResetPassword">
+                    <input type="hidden" id="id" name="id" value="'.$arrid[$x].'">
+                    <input
+                        type="password"
+                        name = "newpass"
+                        id="passw"
+                        class="input_register"
+                        value="'.$arrPassword[$x].'"
+                    >
+                    <input
+                        name="submit"
+                        type = "submit"
+                        value = "Reset Password"
+                        class = "button">
+                </form>');
         echo('</div>');
         echo('</div>');                
     }
     
 ?>        
-        
-        
-    
+ 
