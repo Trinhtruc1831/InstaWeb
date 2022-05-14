@@ -17,6 +17,20 @@
       </nav>
     </header>
     <main>
+<!--  sai password -->
+<?php
+if (isset($data['result'])) {
+    // var_dump($data['result']);
+?>
+<p style=" margin-top: 40px; text-align: center; font-size: 20px; font-weight: bold;">
+    <?php if ($data['result'] == '1') {
+        echo "Wrong password, please login again!";
+    }else if ($data['result'] == '2') {
+        echo "Email is wrong, please login again!";
+    }
+    ?>
+<?php } ?>
+</p>
       <div class="container register--wrapper">
         <form action="./Login" method="post">
           <h1>Sign in</h1>
@@ -43,7 +57,7 @@
               onfocus="show_message()"
               onblur="hide_message()"
               onkeyup="validate_password()"
-              value="<?php if(isset($_COOKIE["password"])){ echo $_COOKIE["password"]; }else{ echo "";}    ?>"
+              value="<?php if(isset($_COOKIE["passw"])){ echo $_COOKIE["passw"]; }else{ echo "";}    ?>"
               required
             />
           </div>
@@ -54,7 +68,7 @@
 
           <div class="register__button">
             <input type="reset" class="register__reset" value="Clear" />
-            <input type="submit" class="register__submit" value="Sign in" />
+            <input type="submit" class="register__submit" value="Sign in" name="btnLogin"/>
           </div>
 
           <div>
@@ -75,16 +89,7 @@
         </div>
       </div>
     </div>
-    <footer>
-      <div class="fter">
-        <ul class="list list--inline">
-          <li class="list__item"><a href="about.html">About</a></li>
-          <li class="list__item"><a href="copyright.html">Copyright</a></li>
-          <li class="list__item"><a href="privacy.html">Privacy</a></li>
-          <li class="list__item"><a href="help.html">Help</a></li>
-        </ul>
-      </div>
-    </footer>
+    
     <script src="public/js/cookies.js"></script>
   </body>
 </html>

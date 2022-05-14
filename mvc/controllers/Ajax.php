@@ -10,12 +10,12 @@
         }
         
         public function CheckNewUser(){
-            $user = $_POST["user"];
-            echo $this->MemberModel->CheckNewUser($user);
+            $Email = $_POST["email"];
+            echo $this->MemberModel->CheckNewUser($Email);
         }
         public function CheckUser(){
-            $user = $_POST["user"];
-            echo $this->MemberModel->CheckUser($user);
+            $Email = $_POST["email"];
+            echo $this->MemberModel->CheckUser($Email);
         }
     }
 ?>

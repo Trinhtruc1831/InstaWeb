@@ -11,7 +11,7 @@
             if ($data["result"] == true) {
                 echo "Sign up successfully!";
             } else
-            echo "Username has been existed!";
+            echo "Email has been existed!";
             ?>
         </h2>
     <?php
