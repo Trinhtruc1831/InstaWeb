@@ -21,6 +21,13 @@ class Admin extends Controller{
             "post"=>$post
         ]);
     }
+    public function managehistory(){
+        $hist = $this->LogHistoryModel->GetAllHistory();
+        $this->view("masterAdmin", [
+            "page"=>"managehistory",
+            "hist"=>$hist
+        ]);
+    }
     public function SearchMember(){
         // echo($_GET["keyword"]);
         $mem = $this->MemberModel->SearchMember($_POST['keyword']);

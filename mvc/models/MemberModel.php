@@ -64,20 +64,6 @@ class MemberModel extends DB{
             } 
             return json_encode($result);
         }
-        public function CheckUser($Email){
-            $sql = "SELECT id FROM account WHERE Email = '$Email' ";
-                $row = mysqli_query($this->con, $sql);
-                //kiểm tra user trùng
-                if (mysqli_num_rows($row) > 0 ){
-                    $result = true;
-                    //echo "";
-                }
-                else {
-                    $result = false;
-                    //echo " Not modify your username!!!";
-                } 
-                // return json_encode(echo);
-            }
 
     //login member
     public function CheckMember($Email, $Pass){

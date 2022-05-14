@@ -130,5 +130,12 @@
           </div>
         </div>
       </div>
+      <footer>
+      <div class="fter">
+        <ul class="list list--inline">
+          <li class="list__item"><a href="Login/logout">LOGOUT</a></li>
+        </ul>
+      </div>
+</footer>
     </main>
     

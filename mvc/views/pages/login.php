@@ -26,13 +26,14 @@ if (isset($data['result'])) {
     <?php if ($data['result'] == '1') {
         echo "Wrong password, please login again!";
     }else if ($data['result'] == '2') {
-        echo "Email is wrong, please login again!";
+        echo "Username is wrong, please login again!";
     }
     ?>
 <?php } ?>
 </p>
+</p>
       <div class="container register--wrapper">
-        <form action="./Login" method="post">
+        <form action="./Login/" method="post">
           <h1>Sign in</h1>
           <div class="input-register">
             <label>
@@ -57,7 +58,11 @@ if (isset($data['result'])) {
               onfocus="show_message()"
               onblur="hide_message()"
               onkeyup="validate_password()"
-              value="<?php if(isset($_COOKIE["passw"])){ echo $_COOKIE["passw"]; }else{ echo "";}    ?>"
+              value="
+              <?php if(isset($_COOKIE["passw"])){ 
+                        echo $_COOKIE["passw"]; 
+                      } else{ echo "";}    
+              ?>"
               required
             />
           </div>

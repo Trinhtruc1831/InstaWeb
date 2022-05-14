@@ -9,7 +9,7 @@ class Home extends Controller{
     function SayHi(){
         $post = $this->PostModel->PublicPost();
         $this->view("masterHome", [
-            "page"=>"Home",
+            "page"=>"home",
             "post"=>$post
         ]);
 
