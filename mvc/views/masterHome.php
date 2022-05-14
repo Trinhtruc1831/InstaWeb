@@ -20,5 +20,6 @@
      <script src="public/js/formcontrol.js"></script>
     <script src="public/js/cookies.js"></script>
     <script src="public/js/dragdrop.js"></script>
+    <script src="public/js/checknewuser.js"></script>
   </body>
 </html>

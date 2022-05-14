@@ -5,19 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
-    <link rel="stylesheet" href="/public/css/normalize.css" />
-    <link rel="stylesheet" href="/public/css/styles.css" />
+    <link rel="stylesheet" href="public/css/normalize.css" />
+    <link rel="stylesheet" href="public/css/styles.css" />
   </head>
   <body>
     <header>
       <nav class="nav">
         <a href="/mvc/views/pages/viewimage.html"
-          ><img src="/public/assets/img/logo.png" class="logo-main" alt=""
+          ><img src="public/assets/img/logo.png" class="logo-main" alt=""
         /></a>
       </nav>
     </header>
 
     <main>
+    <?php if (isset($data["result"])) { ?>
+    <h2 style="text-align: center">
+    <?php if (isset($data["result"])) { ?>
+        <h2 style="text-align: center">
+            <?php
+            if ($data["result"] == true) {
+                echo "Sign up successfully!";
+            } else
+            echo "Email has been existed!";
+            ?>
+        </h2>
+    <?php
+    }
+} ?>
       <div class="container register--wrapper" >
         <form class="register--form" action="./Login/Register" method="post">
           <h1>Register</h1>
@@ -27,9 +41,10 @@
               Email
               <br />
               <input
+                id="email"
                 type="email"
                 placeholder="Enter Email"
-                name="Email"
+                name="email"
                 required
               />
             </label>
@@ -42,7 +57,7 @@
                 type="password"
                 placeholder="Enter Password"
                 id="passw"
-                name="Pass"
+                name="passw"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}"
                 onfocus="show_message()"
                 onblur="hide_message()"
@@ -62,7 +77,7 @@
             </p>
           </div>
 
-          <div class="input-register">
+          <!-- <div class="input-register">
             <label>
               Retype Password<br />
               <input
@@ -76,7 +91,7 @@
             </label>
           </div>
 
-          <span id="wrong_pass_alert"></span>
+          <span id="wrong_pass_alert"></span> -->
 
           <div class="input-register">
             <label for="img">Select Profile Image</label><br />
@@ -89,7 +104,7 @@
               <input
                 type="text"
                 placeholder="Enter First name"
-                name="First_name"
+                name="firstname"
                 minlength="2"
                 maxlength="20"
               />
@@ -102,7 +117,7 @@
               <input
                 type="text"
                 placeholder="Enter Last name"
-                name="Last_name"
+                name="lastname"
                 minlength="2"
                 maxlength="20"
                 required
@@ -125,19 +140,11 @@
           </div>
         </div>
       </div>
-      <script src="/public/js/cookies.js"></script>
+      <script src="public/js/cookies.js"></script>
     </main>
-    <footer>
-      <div class="fter">
-        <ul class="list list--inline">
-          <li class="list__item"><a href="about.html">About</a></li>
-          <li class="list__item"><a href="copyright.html">Copyright</a></li>
-          <li class="list__item"><a href="privacy.html">Privacy</a></li>
-          <li class="list__item"><a href="help.html">Help</a></li>
-        </ul>
-      </div>
-    </footer>
-    <script src="/public/js/validatepassword.js"></script>
-    <script src="/public/js/checkpassword.js"></script>
+    
+    <script src="public/js/validatepassword.js"></script>
+    <script src="public/js/checkpassword.js"></script>
+    <script src="public/js/checknewuser.js"></script>
   </body>
 </html>

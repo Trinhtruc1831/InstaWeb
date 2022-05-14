@@ -15,8 +15,9 @@ class MemberModel extends DB{
         
     }
     //register
-    public function InsertNewUser($First_name, $Last_name, $Pass, $Email){   
-        $sql = "INSERT INTO account VALUES ( null, '$First_name', '$Last_name', '$Pass', '$Email')";
+    public function InsertNewUser($First_name, $Last_name, $Pass, $Ava_Img, $Email){   
+        $sql = "INSERT INTO account (First_name, Last_name, Pass, Ava_Img, Email)
+                VALUES ('$First_name', '$Last_name', '$Pass', '$Ava_Img', '$Email')";
         if (mysqli_query($this->con, $sql) ){
             $result = true;
         }
@@ -24,6 +25,57 @@ class MemberModel extends DB{
             $result = false;
         }                          
     return json_encode($result);
+    }
+
+    //check tài khoản
+    public function CheckNewUser($Email){
+            $sql = "SELECT * FROM account WHERE Email = '$Email' ";
+            $row = mysqli_query($this->con, $sql);
+            //kiểm tra email trùng
+            if (mysqli_num_rows($row) > 0 ){
+                $result = false;
+                //echo "Email has been existed!";
+            }
+            else {
+                $result = true;
+                //echo "";
+            } 
+            return json_encode($result);
+        }
+        public function CheckUser($Email){
+            $sql = "SELECT id FROM account WHERE Email = '$Email' ";
+                $row = mysqli_query($this->con, $sql);
+                //kiểm tra user trùng
+                if (mysqli_num_rows($row) > 0 ){
+                    // $result = true;
+                    echo "";
+                }
+                else {
+                    // $result = false;
+                    echo " Not modify your username!!!";
+                } 
+                // return json_encode(echo);
+            }
+
+    //login member
+    public function CheckMember($Email, $Pass){
+        $qr = "SELECT * FROM account WHERE Email = '$Email'";
+        $row = mysqli_query($this->con, $qr);
+        $data = mysqli_fetch_assoc($row);
+        //kiểm tra user đã tồn tại hay chưa
+        if (mysqli_num_rows($row) == 1 ){
+             //nếu pass đã mã hóa thì xài hàm password_verify($data['pass'], $Password) để giải mã
+            if($Pass == $data['Pass']){
+                return json_encode($data);
+            }
+            else {
+                $result = 1;// sai mật khẩu
+            }
+        }
+        else{
+            $result  = 2;//sai tên đăng nhập
+        }
+        return json_encode($result);    
     }
 
     //  CŨ!!!!
