@@ -19,7 +19,7 @@ require_once './mvc/controllers/User.php';
                 $Email = $_POST["email"];
                 $Pass = $_POST["passw"];
                 $kq=$this->MemberModel->CheckMember($Email, $Pass); 
-                echo($kq);
+                //echo($kq);
                  //show result
                  $this->view("masterHome" ,[
                     "page"=>"login",
@@ -73,23 +73,32 @@ require_once './mvc/controllers/User.php';
                 $Ava_Img = $_POST["img"];
                 //$pass = password_hash($pass, PASSWORD_DEFAULT);
                 //insert database by users
-                $kq = $this->MemberModel->InsertNewUser($First_name, $Last_name, $Pass, $Ava_Img, $Email);
-                //echo $kq; 
-                //Kiểm tra đăng nhập thành công/thất bại (true/false)
-                //show result
-                $this->view("masterHome" ,[
-                    "page"=>"register",
-                    "result"=>$kq
-                ]);    
+                $error = $this->MemberModel->CheckNewUser($Email);
+               // $kq = $this->MemberModel->InsertNewUser($First_name, $Last_name, $Pass, $Ava_Img, $Email);
+                if ($error = true){
+                    $this->view("masterHome" ,[
+                        "page"=>"register",
+                        "error"=>$error
+                    ]);
+                }
+                else {
+                    $kq = $this->MemberModel->InsertNewUser($First_name, $Last_name, $Pass, $Ava_Img, $Email);
+                    $this->view("masterHome" ,[
+                        "page"=>"register",
+                        "result"=>$kq
+                    ]);
+                }                  
             }
             else{
                 $this->view("masterHome", [
                     "page"=>"register",
                 ]);
-            }  
+            }
+
         }
     }
 ?>
+để t thử lại cái ajax xem m, yên tâm làm gì làm đi tối nay t up lên cho
 
 
 

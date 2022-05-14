@@ -33,11 +33,11 @@ class MemberModel extends DB{
             $row = mysqli_query($this->con, $sql);
             //kiểm tra email trùng
             if (mysqli_num_rows($row) > 0 ){
-                $result = false;
+                $result = true;
                 //echo "Email has been existed!";
             }
             else {
-                $result = true;
+                $result = false;
                 //echo "";
             } 
             return json_encode($result);
@@ -47,12 +47,12 @@ class MemberModel extends DB{
                 $row = mysqli_query($this->con, $sql);
                 //kiểm tra user trùng
                 if (mysqli_num_rows($row) > 0 ){
-                    // $result = true;
-                    echo "";
+                    $result = true;
+                    //echo "";
                 }
                 else {
-                    // $result = false;
-                    echo " Not modify your username!!!";
+                    $result = false;
+                    //echo " Not modify your username!!!";
                 } 
                 // return json_encode(echo);
             }

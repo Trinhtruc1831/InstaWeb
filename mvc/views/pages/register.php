@@ -18,6 +18,8 @@
     </header>
 
     <main>
+    
+
     <?php if (isset($data["result"])) { ?>
     <h2 style="text-align: center">
     <?php if (isset($data["result"])) { ?>
@@ -25,13 +27,28 @@
             <?php
             if ($data["result"] == true) {
                 echo "Sign up successfully!";
-            } else
-            echo "Email has been existed!";
+            } 
             ?>
         </h2>
     <?php
     }
 } ?>
+         
+         <?php if (isset($data["error"])) { ?>
+    <h2 style="text-align: center">
+    <?php if (isset($data["error"])) { ?>
+        <h2 style="text-align: center">
+            <?php
+            if ($data["error"] == true) {
+                echo "Sign up successfully!";
+            } 
+            ?>
+        </h2>
+    <?php
+    }
+} ?>
+
+    
       <div class="container register--wrapper" >
         <form class="register--form" action="./Login/Register" method="post">
           <h1>Register</h1>
@@ -142,9 +159,20 @@
       </div>
       <script src="public/js/cookies.js"></script>
     </main>
-    
+    <footer>
+      <div class="fter">
+        <ul class="list list--inline">
+          <li class="list__item"><a href="Login">LOGIN</a></li>
+        </ul>
+      </div>
+</footer>
     <script src="public/js/validatepassword.js"></script>
     <script src="public/js/checkpassword.js"></script>
     <script src="public/js/checknewuser.js"></script>
   </body>
 </html>
+
+<!-- comment ddi m
+để kao
+
+ -->
