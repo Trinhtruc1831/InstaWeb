@@ -550,10 +550,9 @@ html{
     margin-left: 120px;
     margin-right: 20px;
   }
-
-  #admin-image{
+  /* #admin-image{
     display: none;
-  }
+  } */
 
   .admin_search{
     height: 2rem;
