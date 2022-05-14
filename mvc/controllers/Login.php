@@ -99,7 +99,7 @@ require_once './mvc/controllers/User.php';
         }
     }
 ?>
-để t thử lại cái ajax xem m, yên tâm làm gì làm đi tối nay t up lên cho
+
 
 
 
