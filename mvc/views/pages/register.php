@@ -40,7 +40,7 @@
         <h2 style="text-align: center">
             <?php
             if ($data["error"] == true) {
-                echo "Sign up successfully!";
+                echo "Email has been existed!";
             } 
             ?>
         </h2>

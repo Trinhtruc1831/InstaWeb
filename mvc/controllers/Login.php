@@ -74,6 +74,7 @@ require_once './mvc/controllers/User.php';
                 //$pass = password_hash($pass, PASSWORD_DEFAULT);
                 //insert database by users
                 $error = $this->MemberModel->CheckNewUser($Email);
+                echo($error);
                // $kq = $this->MemberModel->InsertNewUser($First_name, $Last_name, $Pass, $Ava_Img, $Email);
                 if ($error = true){
                     $this->view("masterHome" ,[
