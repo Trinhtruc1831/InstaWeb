@@ -19,7 +19,6 @@
     
       <!--Photo zone-->
       <?php
-        //hứng kết quả truyền qua từ Musicmodel từ Home.php
         $arrPostLink = [];
         $arrPostDes = [];
         $arrNameOwner = [];

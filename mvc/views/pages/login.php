@@ -12,7 +12,7 @@
     <header>
       <nav class="nav">
         <a href="/mvc/views/pages/viewimage.html"
-          ><img src="/public/assets/img/logo.png" class="logo-main" alt=""
+          ><img src="./public/assets/img/logo.png" class="logo-main" alt=""
         /></a>
       </nav>
     </header>

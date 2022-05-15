@@ -3,11 +3,9 @@ class User extends Controller {
 
     public $PostModel;
     public $MemberModel;
-    public $LogHistoryModel;
     public function __construct(){
         $this->MemberModel = $this->model("MemberModel");
         $this->PostModel = $this->model("PostModel");
-        $this->LogHistoryModel = $this->model("LogHistoryModel");
     } 
     function SayHi(){
         $id = $_COOKIE["UserId"];
@@ -174,7 +172,7 @@ class User extends Controller {
         //////////////////////////////////////
         //Vì tên ảnh sẽ theo thứ tự từ 1, 2, 3, ...n 
         //Trường hợp khi có ai đó xóa mất 1 số trong dãy (1, 3, 4, ...n)
-        //Thì chèn ảnh mới vào trổ trống đó để tiết kiệm chứ ko lấy số lớn nhất + 1.
+        //Thì chèn ảnh mới vào chổ trống đó để tiết kiệm chứ ko lấy số lớn nhất + 1.
         //Thuật toán trình bày như sau:
         $allpost = $this->PostModel->allPostASC(); 
         $i = 0;
@@ -282,10 +280,7 @@ class User extends Controller {
                 // Xử lý di chuyển file tạm ra thư mục cần lưu trữ, dùng hàm move_uploaded_file SITE_ROOT.'/static/images/slides/1/1.jpg'
                 if (move_uploaded_file($_FILES["fileupload"]["tmp_name"], $target_file))
                 {
-                    // echo "File ". basename( $_FILES["fileupload"]["name"]).
-                    // " Đã upload thành công.";
-
-                    // echo "File lưu tại " . $target_file;
+                   //post successfully!
 
                 }
                 else

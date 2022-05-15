@@ -81,7 +81,7 @@ require_once './mvc/controllers/User.php';
                 //Trường hợp khi có ai đó xóa mất 1 số trong dãy (1, 3, 4, ...n)
                 //Thì chèn ảnh mới vào trổ trống đó để tiết kiệm chứ ko lấy số lớn nhất + 1.
                 //Thuật toán trình bày như sau:
-                $allmem = $this->MemberModel->GetAllMemberASC(); 
+                $allmem = $this->MemberModel->GetAllMemberACS(); 
                 $i = 0;
                 $OrderNewImg =$i;
                 $max = 1;
@@ -220,10 +220,18 @@ require_once './mvc/controllers/User.php';
                 }
                 else {
                     $kq = $this->MemberModel->InsertNewUser($First_name, $Last_name, $Pass, $Ava_Img, $Email);
-                    $this->view("masterHome" ,[
-                        "page"=>"register",
-                        "result"=>$kq
-                    ]);
+                    if ($kq == true) {
+                        echo "<script type='text/javascript'>alert('Sign up successfully!');</script>";
+                        $this->view("masterHome" ,[
+                            "page"=>"register",
+                            "page"=>"login"
+                        ]);
+                    } else{
+                        $this->view("masterHome" ,[
+                            "page"=>"register",
+                            "result"=>$kq
+                        ]);
+                    }
                 }                  
             }
             else{

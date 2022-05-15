@@ -25,7 +25,7 @@
           <!-- <div class="icon">
             <img src="public/assets/img/search.png" class="search" alt="" />
           </div> -->
-          <a href="User/UserProfile">
+          <a href="User/">
             <div class="profile-pic">
               <?php echo('<img src="'.$AvaAccount.'" alt="" />') ?>
             </div>
