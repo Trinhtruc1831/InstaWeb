@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2022 at 04:53 PM
+-- Generation Time: May 15, 2022 at 07:33 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -48,7 +48,10 @@ INSERT INTO `account` (`id`, `First_name`, `Last_name`, `Pass`, `Ava_Img`, `Emai
 (4, 'George', 'Edison', '964clemOn', 'public/img/ava/2.jpg', '45tc@gmail.com', '2022-05-15 10:52:03'),
 (5, 'Matt', 'Jenkins', '7302Egg', 'public/img/ava/1.jpg', '2t@gmail.com', '2022-05-15 10:51:52'),
 (14, 'Trịnh', 'Trúc', 'thanhtruc123T', 'public/img/ava/6.jpg', 'thanhtruc@gmai.com', '2022-05-15 11:32:10'),
-(15, 'Trịnh', 'Trúc', 'thaTnhtruc123', 'public/img/ava/7.jpg', 'abchi@gmail.com', '2022-05-15 13:14:33');
+(15, 'Trịnh', 'Trúc', 'thaTnhtruc123', 'public/img/ava/7.jpg', 'abchi@gmail.com', '2022-05-15 13:14:33'),
+(16, 'Trịnh', 'Trúc', 'thanhtruc123T', 'public/img/ava/8.jpg', 'Nhathue@gmail.com', '2022-05-15 17:01:46'),
+(17, 'Trịnh', 'Trúc', 'thanhtruc123T', 'public/img/ava/9.jpg', 'thanhtrucasdf@gmail.com', '2022-05-15 17:10:56'),
+(18, 'Trịnh', 'Trúc', 'adsdafW123', 'public/img/ava/10.jpg', 'concho@gmail.com', '2022-05-15 17:12:45');
 
 -- --------------------------------------------------------
 
@@ -103,13 +106,13 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `Pid` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Pid` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
