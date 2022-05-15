@@ -15,43 +15,39 @@ require_once './mvc/controllers/User.php';
 
         //LOGIN
         public function SayHi(){
-            if (isset($_POST["btnLogin"]) ){
+            if (isset($_POST["btnLogin"]))
+            {
                 $Email = $_POST["email"];
                 $Pass = $_POST["passw"];
                 $kq=$this->MemberModel->CheckMember($Email, $Pass); 
-                //echo($kq);
-                 //show result
-                 $this->view("masterHome" ,[
+                //echo($error);
+               if($kq == '1' || $kq == '2'){
+                $this->view("masterHome" ,[
                     "page"=>"login",
                     "result"=>$kq
-                ]);    
+                ]);
+                }   
+                
+                else{
+                    $arr = json_decode($kq,true);
+                    // var_dump($arr);
+                    $_SESSION['login'] = $arr;
+                    //set cookie 1 ngày
+                    //setcookie("email", $arr["email"], time() + (86400 * 30), "/"); // 86400 = 1 day
+                    //setcookie("passw", $arr["passw"], time() + (86400 * 30), "/"); // 86400 = 1 day
+                    // User::Home($Username);
+                    $this->view("masterHome", [
+                        "page"=>"user",
+                    ]);
+                }             
             }
-            //     else{                  
-            //         $arr = json_decode($kq,true);
-            //         // var_dump($arr);
-            //         $_SESSION['login'] = $arr;
-            //         //set cookie 1 ngày
-            //         setcookie("email", $arr["email"], time() + (86400 * 30), "/"); // 86400 = 1 day
-            //         setcookie("passw", $arr["passw"], time() + (86400 * 30), "/"); // 86400 = 1 day
-            //         if($_SESSION['login']['email'] == 'admin'){
-            //             $this->admin = new Admin;
-            //             $this->admin->SayHi();
-            //             // Admin/SayHi
-            //         }
-            //         else{
-            //             // User::Home($Username);
-            //             $this->user = new User;
-            //             $this->user->Home($_SESSION['login']['email']);
-            //         } 
-            //     }
-            // }
-            else
-            {
+            else{
                 $this->view("masterHome", [
                     "page"=>"login",
                 ]);
-            } 
+            }  
         }
+            
 
         // LOUGOUT
         function logout(){
@@ -59,7 +55,7 @@ require_once './mvc/controllers/User.php';
             unset($_SESSION['login']);
             //xóa hết tất cả các session
             session_destroy();
-            header('location: http://localhost/Insta/');
+            header('location: http://localhost/InstaWeb/');
         }
 
         //REGISTER
@@ -74,7 +70,7 @@ require_once './mvc/controllers/User.php';
                 //$pass = password_hash($pass, PASSWORD_DEFAULT);
                 //insert database by users
                 $error = $this->MemberModel->CheckNewUser($Email);
-                echo($error);
+                //echo($error);
                // $kq = $this->MemberModel->InsertNewUser($First_name, $Last_name, $Pass, $Ava_Img, $Email);
                 if ($error = true){
                     $this->view("masterHome" ,[

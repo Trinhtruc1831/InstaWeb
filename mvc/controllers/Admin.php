@@ -67,9 +67,22 @@ class Admin extends Controller{
             "post"=>$post
         ]);
     }
+    // ----------------------------------------------------
+
     
-
-
+    public function Diary($Pid, $id){
+        if(isset($Pid) and isset($id)){
+            $kq =  $this->LogHistoryModel->AddLogHis($Pid, $id);
+        }
+    }
+    //lấy diaray
+    public function LoadDiary($Email, $id){
+        $kq = $this->LogHistoryModel->GetUserLog($Email);
+        // echo $kq;
+        $this->view("masterHome" ,[
+            "page"=>"diary",
+        ]);
+    }
 }
     //Cũ
 //     //-----------------------------MANAGE MEMBER-------------------------------------------------------

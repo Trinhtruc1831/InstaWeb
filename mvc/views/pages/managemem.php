@@ -1,3 +1,8 @@
+<?php
+    if(!isset($_SESSION['login'])){
+        header("location:http://localhost/InstaWeb/Login");
+    }
+?>
 <div class="admin_content" id="admin-user" style="display:block;">
         <form class="admin_search" method="post" action="Admin/SearchMember">
           <input type="text" class="input" name ="keyword" placeholder="Search">
