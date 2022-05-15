@@ -1,35 +1,24 @@
 <?php
 class LogHistoryModel extends DB{
     //insert log history DB    
-    public function GetUserLog($email){
-        $qr = "SELECT lh.date, lh.time, account.email, post.img, lh.id, lh.idlh FROM (((loghistory  lh INNER JOIN music ON lh.idmusic = music.idmusic)
-                                            INNER JOIN member ON lh.idmember = member.id)
-                                            INNER JOIN typemusic tm ON music.idtype = tm.idtype)
-                                            WHERE account.email = '$Email' ORDER BY lh.date DESC, lh.time DESC";
-                                            
-        // echo $qr;
+    public function AddLogHis($Pid, $id){
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $date = date("Y-m-d");
+        $time = date("H:i:s");
+        $qr = "INSERT INTO loghistory (date, time, Pid, id) VALUES('$date', '$time', '$Pid', '$id')";
+        mysqli_query($this->con, $qr);
+    }
+
+    public function GetUserLog($Email){
+        $qr = "SELECT lh.date, lh.time, account.Email, lh.id, lh.idlh FROM ((loghistory  lh 
+                INNER JOIN post ON lh.Pid = post.Pid)
+                INNER JOIN account ON lh.id = account.id)
+                WHERE account.Email = 'tdc@gmail.com' ORDER BY lh.date DESC, lh.time DESC";
+        //SELECT account.Email FROM account WHERE account.Email = 'tdc@gmail.com';                                   
+        //echo $qr;
         return  mysqli_query($this->con, $qr);
         
     }
-    
-
-    // public function SeachDiary($username, $value){
-    //     $qr = "SELECT lh.date, lh.time, music.songtitle, tm.typemusic, member.username, lh.idmember, lh.idlh FROM (((loghistory  lh INNER JOIN post ON lh.Pid = post.Pid)
-    //                                         INNER JOIN account ON lh.id = account.id)
-    //                                         WHERE member.username = '$username' and  
-    //                                         (music.songtitle like '%$value%' OR  tm.typemusic like '%$value%' OR  lh.time like '%$value%' OR  lh.date like '%$value%')
-    //                                         ORDER BY lh.date DESC, lh.time DESC";
-                                            
-    //     // echo $qr;
-    //     $row = mysqli_query($this->con, $qr);
-    //     if (mysqli_num_rows($row) == 0){
-    //         return false;
-    //     }
-    //     else{
-    //         return $row;
-    //     }
-
-    // }
    
 }
 ?>

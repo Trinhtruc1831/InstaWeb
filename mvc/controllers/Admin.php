@@ -21,13 +21,6 @@ class Admin extends Controller{
             "post"=>$post
         ]);
     }
-    public function managehistory(){
-        $hist = $this->LogHistoryModel->GetAllHistory();
-        $this->view("masterAdmin", [
-            "page"=>"managehistory",
-            "hist"=>$hist
-        ]);
-    }
     public function SearchMember(){
         // echo($_GET["keyword"]);
         $mem = $this->MemberModel->SearchMember($_POST['keyword']);
@@ -74,9 +67,22 @@ class Admin extends Controller{
             "post"=>$post
         ]);
     }
+    // ----------------------------------------------------
+
     
-
-
+    public function Diary($Pid, $id){
+        if(isset($Pid) and isset($id)){
+            $kq =  $this->LogHistoryModel->AddLogHis($Pid, $id);
+        }
+    }
+    //lấy diaray
+    public function LoadDiary($Email, $id){
+        $kq = $this->LogHistoryModel->GetUserLog($Email);
+        // echo $kq;
+        $this->view("masterHome" ,[
+            "page"=>"diary",
+        ]);
+    }
 }
     //Cũ
 //     //-----------------------------MANAGE MEMBER-------------------------------------------------------
