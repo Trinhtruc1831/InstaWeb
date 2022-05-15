@@ -10,24 +10,14 @@ class User extends Controller {
         $this->LogHistoryModel = $this->model("LogHistoryModel");
     } 
     function SayHi(){
-        $song = $this->MusicModel->ourSong();
-        $noise = $this->MusicModel->whiteNoise();
+        $id = "1";
+        $post = $this->PostModel->PubInterPriPost($id);
         $this->view("masterHome", [
             "page"=>"user",
-            "song"=>$song,
-            "noise"=>$noise
+            "post"=>$post,
         ]);
-
     }
-    //return Home from other pages 
-    function Home($email){
-        // $kq = $this->MemberModel->CurrentMember($username);
-        $this->view("masterHome", [
-            "page"=>"user",
-            // "result"=>$kq,
-        ]);
-
-    }
+    
 }
     
     //--------------------DIARY-----------------------------

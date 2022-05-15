@@ -1,8 +1,4 @@
-<?php
-    if(!isset($_SESSION['login'])){
-        header("location:http://localhost/InstaWeb/Login");
-    }
-?>
+
 <div class="admin_content" id="admin-image" >
   <div class="admin-grid-wrapper">
   <div class="grid grid--1x3 admin_image_grid">

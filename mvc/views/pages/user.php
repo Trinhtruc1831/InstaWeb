@@ -1,3 +1,16 @@
+<?php
+    if(!isset($_SESSION['login'])){
+        header("location:http://localhost/InstaWeb/Login");
+    }
+?>
+
+<?php
+  //hứng kết quả truyền qua từ Musicmodel từ Home.php
+  $AvaAccount = $data["AvaAccount"];
+  $IdAccount = $data["IdAccount"];
+  
+?>
+
 
 <header>
       <nav class="nav">
@@ -13,7 +26,7 @@
             <img src="public/assets/img/search.png" class="search" alt="" />
           </div> -->
           <div class="profile-pic">
-            <img src="public/assets/img/oranges.jpg" alt="" />
+          <?php echo('<img src="'.$AvaAccount.'" alt="" />') ?>
           </div>
         </div>
       </nav>
@@ -21,7 +34,7 @@
     <main>
     <section class="image-share content_center">
         <div class="image-share-wrapper">
-          <div class="profile-pic"><img src="public/assets/img/oranges.jpg"></div>
+          <div class="profile-pic"><?php echo('<img src="'.$AvaAccount.'" alt="" />') ?></div>
           <div class="image-share-button"><button class="btn" onclick="openForm()">Share image</button></div>
         </div>
         </div>

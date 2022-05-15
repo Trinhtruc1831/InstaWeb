@@ -14,6 +14,13 @@ class MemberModel extends DB{
         return mysqli_query($this->con, $sql);
         
     }
+    //get a specific member by an email
+    public function GetSpeMemByEmail($Email)
+    {
+        $sql = "SELECT * FROM account WHERE Email = '$Email' ";
+        return mysqli_query($this->con, $sql);
+        
+    }
     //get a specific member from database
     public function ResetPass($id,$newpass)
     {

@@ -1,8 +1,3 @@
-<?php
-    if(!isset($_SESSION['login'])){
-        header("location:http://localhost/InstaWeb/Login");
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

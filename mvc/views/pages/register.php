@@ -50,7 +50,7 @@
 
     
       <div class="container register--wrapper" >
-        <form class="register--form" action="./Login/Register" method="post" enctype="multipart/form-data>
+        <form class="register--form" action="./Login/Register" method="post" enctype="multipart/form-data">
           <h1>Register</h1>
           <p></p>
           <div class="input-register">
@@ -107,12 +107,11 @@
               />
             </label>
           </div>
-
           <span id="wrong_pass_alert"></span> -->
 
           <div class="input-register">
             <label for="img">Select Profile Image</label><br />
-            <input type="file" id="fileupload" name="fileupload" accept="image/*" required />
+            <input type="file" name="fileupload" id="fileupload">
           </div>
 
           <div class="input-register">
@@ -171,4 +170,3 @@
     <script src="public/js/checknewuser.js"></script>
   </body>
 </html>
-
