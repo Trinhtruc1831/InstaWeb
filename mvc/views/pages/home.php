@@ -1,7 +1,7 @@
 
 <header>
       <nav class="nav">
-        <a href="viewimages.html"
+        <a href="Home/"
           ><img src="public/assets/img/logo.png" class="logo-main" alt=""
         /></a>
         <!-- <div class="input-group">

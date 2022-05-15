@@ -14,9 +14,7 @@
 
 <header>
       <nav class="nav">
-        <a href="viewimages.html"
-          ><img src="public/assets/img/logo.png" class="logo-main" alt=""
-        /></a>
+        <a href="Home/User"><img src="public/assets/img/logo.png" class="logo-main" alt=""/></a>
         <!-- <div class="input-group">
           <input type="text" class="input" placeholder="Search" />
           <button class="btn">Search</button>
@@ -25,13 +23,37 @@
           <!-- <div class="icon">
             <img src="public/assets/img/search.png" class="search" alt="" />
           </div> -->
-          <div class="profile-pic">
-          <?php echo('<img src="'.$AvaAccount.'" alt="" />') ?>
-          </div>
+          <a href="User/UserProfile">
+            <div class="profile-pic">
+              <?php echo('<img src="'.$AvaAccount.'" alt="" />') ?>
+            </div>
+          </a>          
         </div>
       </nav>
     </header>
     <main>
+    <form class="form-container" action="./User/ShareImage" method="post" enctype="multipart/form-data">
+    <input type="file" name="fileupload" id="fileupload">
+    <textarea
+      name="description"
+      id="description"
+      class="form__description"
+      cols="30"
+      rows="3"></textarea>
+      <div>
+        <input type="radio" name="level" id="public" value=0 />
+        <label for="public">Public</label>
+      </div>
+      <div>
+        <input type="radio" name="level" id="internal" value=1 />
+        <label for="internal">Internal</label>
+      </div>
+      <div>
+        <input type="radio" name="level" id="private" value=2 />
+        <label for="private">Private</label>
+      </div>
+    <input type="submit" class="btn form__btn" value="Upload" name="Submit" />
+    </form>
     <section class="image-share content_center">
         <div class="image-share-wrapper">
           <div class="profile-pic"><?php echo('<img src="'.$AvaAccount.'" alt="" />') ?></div>
@@ -41,7 +63,7 @@
       </section>
       <!--Popup for uploading image-->
       <div class="form-popup content_center" id="myForm">
-        <form class="form-container">
+        <form class="form-container" action="./User/ShareImage" method="post" enctype="multipart/form-data">
           <div class="grid grid--1x2">
             <div class="form--div">
               <h2>Image</h2>
@@ -49,7 +71,7 @@
                 <h3>Drag & Drop File Here</h3>
                 <h3>OR</h3>
                 <button hidden>Browse File</button>
-                <input type="file" />
+                <input type="file" name="fileupload" id="fileupload">
               </div>
             </div>
             <div class="form--div">
@@ -73,15 +95,15 @@
                 ></textarea>
                 <h2>Share Level</h2>
                 <div>
-                  <input type="radio" name="level" id="public" />
+                  <input type="radio" name="level" id="public" value=0 />
                   <label for="public">Public</label>
                 </div>
                 <div>
-                  <input type="radio" name="level" id="internal" />
+                  <input type="radio" name="level" id="internal" value=1 />
                   <label for="internal">Internal</label>
                 </div>
                 <div>
-                  <input type="radio" name="level" id="private" />
+                  <input type="radio" name="level" id="private" value=2 />
                   <label for="private">Private</label>
                 </div>
               </div>
@@ -92,7 +114,7 @@
                   onclick="remove_img()"
                   value="Clear Image"
                 />
-                <button type="submit" class="btn form__btn">Upload</button>
+                <input type="submit" class="btn form__btn" value="Upload" name="Submit" />
               </div>
             </div>
           </div>

@@ -76,6 +76,30 @@ require_once './mvc/controllers/User.php';
                 $Email = $_POST["email"];
                 $Pass = $_POST["passw"];
 
+                //////////////////////////////////////
+                //Vì tên ảnh sẽ theo thứ tự từ 1, 2, 3, ...n 
+                //Trường hợp khi có ai đó xóa mất 1 số trong dãy (1, 3, 4, ...n)
+                //Thì chèn ảnh mới vào trổ trống đó để tiết kiệm chứ ko lấy số lớn nhất + 1.
+                //Thuật toán trình bày như sau:
+                $allmem = $this->MemberModel->GetAllMemberASC(); 
+                $i = 0;
+                $OrderNewImg =$i;
+                $max = 1;
+                while($row = mysqli_fetch_array($allmem)){
+                    $AvafullpathArr = explode("/",$row["Ava_Img"]); //ex: public/img/ava/1.jpg as an array type
+                    $NameImage = $AvafullpathArr[count($AvafullpathArr)-1]; //ex: 1.jpg
+                    $NameImageArr =  explode(".",$NameImage);
+                    $imageorder = $NameImageArr[0];
+                    $i = $i+1;
+                    $max = $imageorder;
+                    if($i != $imageorder){
+                        $OrderNewImg = $i;
+                        break;
+                    }                    
+                } 
+                if($OrderNewImg == 0){
+                    $OrderNewImg= $max+1;//Trường hợp ảnh theo đúng thứ tự và order của ảnh mới sẽ bằng max các ảnh cũ + 1
+                }
 
                 //process image upload
                 // file upload.php xử lý upload file
@@ -108,8 +132,8 @@ require_once './mvc/controllers/User.php';
                     //Thư mục bạn sẽ lưu file upload
                     $target_dir = $_SERVER['DOCUMENT_ROOT'].'/InstaWeb/public/img/ava'; 
                     //$target_file = $target_dir .'/'.basename($_FILES['fileupload']['name']);
-                    $newname_image = basename($_FILES['fileupload']['name']);
-                    $target_file = $target_dir .'/'.$newname_image;
+                    //$newname_image = basename($_FILES['fileupload']['name']);
+                    $target_file = $target_dir .'/'.$OrderNewImg.'.jpg';
                     $allowUpload   = true;
                     //Lấy phần mở rộng của file (jpg, png, ...)
                     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -180,34 +204,8 @@ require_once './mvc/controllers/User.php';
                     }
 
                 }
-                
 
-                
 
-                //////////////////////////////////////
-                //Vì tên ảnh sẽ theo thứ tự từ 1, 2, 3, ...n 
-                //Trường hợp khi có ai đó xóa mất 1 số trong dãy (1, 3, 4, ...n)
-                //Thì chèn ảnh mới vào trổ trống đó để tiết kiệm chứ ko lấy số lớn nhất + 1.
-                //Thuật toán trình bày như sau:
-                $allmem = $this->MemberModel->GetAllMember(); 
-                $i = 0;
-                $OrderNewImg =$i;
-                $max = 1;
-                while($row = mysqli_fetch_array($allmem)){
-                    $AvafullpathArr = explode("/",$row["Ava_Img"]); //ex: public/img/ava/1.jpg as an array type
-                    $NameImage = $AvafullpathArr[count($AvafullpathArr)-1]; //ex: 1.jpg
-                    $NameImageArr =  explode(".",$NameImage);
-                    $imageorder = $NameImageArr[0];
-                    $i = $i+1;
-                    $max = $imageorder;
-                    if($i != $imageorder){
-                        $OrderNewImg = $i;
-                        break;
-                    }                    
-                } 
-                if($OrderNewImg == 0){
-                    $OrderNewImg= $max+1;//Trường hợp ảnh theo đúng thứ tự và order của ảnh mới sẽ bằng max các ảnh cũ + 1
-                }
                 $Ava_Img = 'public/img/ava/'.$OrderNewImg.'.jpg';
 
 

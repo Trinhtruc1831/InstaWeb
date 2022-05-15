@@ -4,6 +4,10 @@ class PostModel extends DB{
         $qr = "SELECT * FROM post, account where Acc_post = id order by Post_time desc";
             return mysqli_query($this->con, $qr);
     }
+    public function allPostASC(){
+        $qr = "SELECT * FROM post, account where Acc_post = id order by Post_time ASC";
+            return mysqli_query($this->con, $qr);
+    }
     public function PublicPost(){
         $qr = "SELECT * FROM post, account where Show_Level = '0'and Acc_post = id order by Post_time desc";
         return mysqli_query($this->con, $qr);
@@ -23,23 +27,10 @@ class PostModel extends DB{
         return json_encode($result); 
     }
 
-    public function ResetPass($id,$newpass)
-    {
-        $sql = "UPDATE account  
-                SET Pass='$newpass'       
-                WHERE id = '$id'";
-        if (mysqli_query($this->con, $sql) ){
-            $result = true;
-        }
-        else {
-            $result = false;
-        }            
-        return json_encode($result); 
-        
-    }
+    
 
 
-    public function InsertPost($id){
+    public function InsertPost($Descript, $Show_Level, $Post_Img, $Acc_post){
         $qr = "INSERT INTO post (Descript, Show_Level, Post_Img, Acc_post) VALUES ( '$Descript', '$Show_Level', '$Post_Img', '$Acc_post')";
         if (mysqli_query($this->con, $qr) ){
             $result = true;
