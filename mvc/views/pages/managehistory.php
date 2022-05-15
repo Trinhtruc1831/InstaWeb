@@ -11,10 +11,12 @@
         <table class="admin_table">
           <tbody>
             <tr>
+              <th>id</th>
+              <th>Id account</th>
+              <th>Id post</th>
               <th>Email</th>
-              <th>Name</th>
-              <th>Registration time</th>
-              <th>View Info</th>
+              <th>Date</th>
+              <th>Time</th>
             </tr>
 
             <?php

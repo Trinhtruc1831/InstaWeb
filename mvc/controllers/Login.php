@@ -33,8 +33,8 @@ require_once './mvc/controllers/User.php';
                     // var_dump($arr);
                     $_SESSION['login'] = $arr;
                     //set cookie 1 ngày
-                    setcookie("email", $arr["email"], time() + (86400 * 30), "/"); // 86400 = 1 day
-                    setcookie("passw", $arr["passw"], time() + (86400 * 30), "/"); // 86400 = 1 day
+                    //setcookie("email", $arr["email"], time() + (86400 * 30), "/"); // 86400 = 1 day
+                    //setcookie("passw", $arr["passw"], time() + (86400 * 30), "/"); // 86400 = 1 day
                     // User::Home($Username);
                     $this->view("masterHome", [
                         "page"=>"user",
